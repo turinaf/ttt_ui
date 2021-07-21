@@ -1,5 +1,5 @@
 import os.path
-game_file = ".oxogame.dat"
+game_file = ".tttgame.dat"
 
 def _getPath():
     '''getPath() -> string
