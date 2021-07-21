@@ -1,5 +1,9 @@
-from random import choice
 import ttt_logic
+import tkinter
+import tkinter.messagebox as mb
+
+tk = tkinter.Tk()
+tk.withdraw() # Removes blank window behind the message box
 
 menu  = [ "Start new game", 
             "Resume saved game",
@@ -79,8 +83,14 @@ def playGame(game):
         printGame(game)
         choice = input("Cell [1-9 or q to quit]: " )
         if choice.lower()[0] == 'q':
-            save = input("Save game before quitting? [y/n]: ")
-            if save.lower()[0] == 'y':
+            # save = input("Save game before quitting? [y/n]: ")
+            save = mb.askyesno("Save game", "Save game before quitting?")
+            # if save.lower()[0] == 'y':
+            #     ttt_logic.saveGame(game)
+            #     quit()
+            # else:
+            #     quit()
+            if save:
                 ttt_logic.saveGame(game)
                 quit()
             else:
@@ -96,7 +106,8 @@ def playGame(game):
             try:
                 result = ttt_logic.userMove(game, cell)
             except ValueError:
-                print("Choose an empty cell")
+                # print("Choose an empty cell")
+                mb.showerror("Invalid cell", "Choose empty cell")
                 continue
             if not result:
                 result = ttt_logic.computerMove(game)
@@ -104,14 +115,13 @@ def playGame(game):
                 continue
             elif result == 'D':
                 printGame(game)
-                print("It is a draw")
+                # print("It is a draw")
+                mb.showinfo("Result", "It's a draw")
             else: 
                 printGame(game)
-                print("Winner is: ", result, "\n")
+                # print("Winner is: ", result, "\n")
+                mb.showinfo("Result", "The winner is {}".format(result))
 def main():
-    # while True:
-    #     choice = getMenuChoice(menu)
-    #     executeChoice(choice)
     choice = getMenuChoice(menu)
     executeChoice(choice)
     

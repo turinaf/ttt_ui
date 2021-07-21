@@ -20,18 +20,6 @@ def do_quit(self, arg):
     raise SystemExit
 
 def main():
-    # p = ap.ArgumentParser(description="Play a game of tic-tac-toe")
-    # grp = ap.add_mutually_exclusive_group()
-    # grp.add_argument("-r", "--res", "--restore", action='store_true', help="Restore old game")
-    # args = p.parse_args()
-    # if args.new:
-    #     ttt_ui.executeChoice(1)
-    # elif args.res:
-    #     ttt_ui.executeChoice(2)
-    # else:
-    #     while True:
-    #         choice = ttt_ui.getMenuChoice(ttt_ui.menu)
-    #         ttt_ui.executeChoice(choice)
     game = Ttt_cmd().cmdloop()
 
 if __name__=="__main__":
