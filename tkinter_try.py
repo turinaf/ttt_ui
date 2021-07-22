@@ -5,6 +5,7 @@ tk.withdraw() # hide the blank window behind the message box
 mb.showinfo("Title", "The message goes here")
 
 print(dir(mb))
+
 mb.showerror("Error", "What error?")
 mb.showwarning("Tile", "The warning...")
 mb.askyesno("Title", "You really want to do this?")
